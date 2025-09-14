@@ -2,7 +2,7 @@ def get_ticket_purchase():
     while True:
         try:
             tickets_wanted = int(input(
-                "How many tickets would you like to buy (1-4)? "))
+                "Enter the number of tickets you wish to purchase (1-4): "))
             if 1 <= tickets_wanted <= 4:
                 return tickets_wanted
             else:
