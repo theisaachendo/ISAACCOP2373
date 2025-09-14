@@ -12,7 +12,7 @@ def get_ticket_purchase():
 
 
 def process_ticket_sale():
-    remaining_tickets = 20
+    remaining_tickets = 10
     total_buyers = 0
 
     print("Welcome to the Cinema Ticket Pre-Sale!")
