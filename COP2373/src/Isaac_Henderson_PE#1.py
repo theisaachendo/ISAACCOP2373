@@ -13,7 +13,7 @@ def get_ticket_purchase():
 
 def process_ticket_sale():
     remaining_tickets = 10
-    total_buyers = 0
+    customer_count = 0
 
     print("Welcome to the Cinema Ticket Pre-Sale!")
     print(f"Total tickets available: {remaining_tickets}")
@@ -27,7 +27,7 @@ def process_ticket_sale():
 
         if tickets_wanted <= remaining_tickets:
             remaining_tickets -= tickets_wanted
-            total_buyers += 1
+            customer_count += 1
 
             print(f"Purchase successful! You bought "
                   f"{tickets_wanted} ticket(s).")
@@ -37,7 +37,7 @@ def process_ticket_sale():
             print("Please try again with a smaller number.")
 
     print("All tickets have been sold!")
-    print(f"Total number of buyers: {total_buyers}")
+    print(f"Total number of buyers: {customer_count}")
     print("Thank you for your business!")
 
 
