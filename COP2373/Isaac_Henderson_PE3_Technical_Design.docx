@@ -1,0 +1,67 @@
+Name: Isaac Henderson
+Date Created: September 28, 2025
+
+Program Description: This program collects monthly expense data from the user and performs statistical analysis on the expenses. The program asks the user to input expense types and amounts in a continuous loop until they enter "done" for either field. It then uses the reduce method along with lambda functions to calculate and display the total expense, highest expense, and lowest expense from the collected data.
+
+Functions used in the Program (list in order as they are called):
+
+Function Name: main
+Description: Entry point of the program that handles user input collection, data processing, and results display
+Parameters: None
+Variables:
+- expenses (list) - List of tuples storing (expense_type, expense_amount) pairs
+- expense_type (string) - Stores the type of expense entered by user
+- expense_amount (string) - Stores the expense amount as string input from user
+- total_expense (float) - Calculated total of all expenses using reduce method
+- highest_expense (tuple) - Tuple containing the expense type and amount with highest value
+- lowest_expense (tuple) - Tuple containing the expense type and amount with lowest value
+
+Logical Steps:
+1. Initialize empty expenses list
+2. Start infinite loop for data collection
+3. Prompt user for expense type with option to enter "done"
+4. Check if user entered "done" and break loop if true
+5. Prompt user for expense amount with option to enter "done"
+6. Check if user entered "done" and break loop if true
+7. Convert amount to float and append (type, amount) tuple to expenses list
+8. After loop ends, check if expenses list contains data
+9. If expenses exist:
+   - Calculate total using reduce with lambda function
+   - Find highest expense using max with lambda key function
+   - Find lowest expense using min with lambda key function
+   - Display all calculated results
+10. If no expenses exist, display "No expenses were entered" message
+
+Returns: None
+
+Lambda Functions Used in the Program:
+
+Lambda Function 1: lambda x, y: x + y[1]
+Description: Used with reduce method to calculate total expenses
+Purpose: Takes accumulator (x) and current expense tuple (y), returns sum of accumulator and expense amount (y[1])
+
+Lambda Function 2: lambda x: x[1]
+Description: Used as key function for max() and min() operations
+Purpose: Extracts the expense amount (second element) from expense tuple for comparison
+
+Logical Steps:
+1. Program starts with main() function execution
+2. User is continuously prompted to enter expense data
+3. Each expense is stored as a tuple (type, amount) in the expenses list
+4. Loop terminates when user enters "done" for either expense type or amount
+5. If expenses were collected:
+   - reduce() with lambda calculates total by summing all expense amounts
+   - max() with lambda key finds expense tuple with highest amount
+   - min() with lambda key finds expense tuple with lowest amount
+   - Results are formatted and displayed to user
+6. If no expenses were collected, appropriate message is displayed
+7. Program terminates
+
+Key Programming Concepts Demonstrated:
+- Use of reduce() function for aggregation operations
+- Lambda functions for concise inline function definitions
+- Tuple data structure for paired data storage
+- List comprehension and iteration
+- Conditional logic and loop control
+- Input validation and user interaction
+- Exception handling through input validation
