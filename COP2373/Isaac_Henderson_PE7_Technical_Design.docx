@@ -1,0 +1,127 @@
+Isaac Henderson - PE#7 Technical Design Document
+COP2373 - Advanced Python Programming
+Sentence Parser and Counter Program
+
+Program Description: This program allows users to enter a paragraph containing multiple sentences (including sentences that begin with numbers) and uses regular expressions to extract and display each individual sentence. The program counts the total number of sentences found and displays them in a numbered list format. Based on Section 7.4 regex patterns, the program handles sentences ending with periods, exclamation marks, and question marks, including those that start with numerical digits.
+
+Functions used in the Program (list in order as they are called):
+
+Function Name: extract_sentences
+Description: Extracts individual sentences from a paragraph using regular expression patterns to identify sentence boundaries
+Parameters: paragraph (string) - The input paragraph to parse for sentences
+Variables:
+• paragraph (string) - Stores the input paragraph text
+• sentence_pattern (string) - Regular expression pattern for matching sentences
+• sentences (list) - Raw list of sentences found by re.findall()
+• cleaned_sentences (list) - List of sentences after whitespace cleanup
+Logical Steps:
+1. Define regex pattern to match sentences ending with '.', '!', or '?'
+2. Pattern includes sentences that begin with uppercase letters or digits
+3. Use re.findall() with MULTILINE flag to extract all matching sentences
+4. Clean up each sentence by stripping extra whitespace
+5. Filter out any empty sentences
+6. Return list of cleaned sentences
+Returns: list - A list of individual sentences found in the paragraph
+
+Function Name: display_sentences_and_count
+Description: Displays each sentence with numbering and shows the total count of sentences found
+Parameters: sentences (list) - List of sentences to display
+Variables:
+• sentences (list) - Input list of sentences to process
+• i (int) - Loop counter for sentence numbering
+• sentence (string) - Individual sentence being processed
+• sentence_count (int) - Total number of sentences
+Logical Steps:
+1. Print formatted header for sentence display section
+2. Check if sentences list is empty and handle accordingly
+3. Loop through sentences list with enumerate() for numbering
+4. Display each sentence with its number (1, 2, 3, etc.)
+5. Calculate total sentence count using len()
+6. Display formatted footer with total count
+7. Return the sentence count
+Returns: int - The total number of sentences displayed
+
+Function Name: get_user_input
+Description: Handles user interface for collecting paragraph input from the user
+Parameters: None
+Variables:
+• lines (list) - Stores individual lines of input from user
+• line (string) - Temporary variable for each line of input
+• paragraph (string) - Complete paragraph formed by joining all lines
+Logical Steps:
+1. Display program title and instructions
+2. Inform user to press Enter twice when finished
+3. Initialize empty list to store input lines
+4. Start input loop to collect lines until empty line is entered
+5. Append each non-empty line to lines list
+6. Join all lines with spaces to form complete paragraph
+7. Return the assembled paragraph string
+Returns: string - The complete paragraph entered by the user
+
+Function Name: main
+Description: Main program coordinator that manages the overall flow and user interaction loop
+Parameters: None
+Variables:
+• paragraph (string) - Stores user's input paragraph
+• sentences (list) - Stores extracted sentences from paragraph
+• choice (string) - Stores user's response for continuing or exiting
+Logical Steps:
+1. Start infinite loop for continuous program operation
+2. Call get_user_input() to collect paragraph from user
+3. Validate that user entered some text (not empty)
+4. Display the original paragraph for confirmation
+5. Call extract_sentences() to parse the paragraph
+6. Call display_sentences_and_count() to show results
+7. Ask user if they want to analyze another paragraph
+8. Process user's choice to continue or exit
+9. Display thank you message and break loop if exiting
+10. Continue loop if user wants to analyze more paragraphs
+Returns: None
+
+Logical Steps (Overall Program Flow):
+1. Program starts with main() function when script is executed
+2. User is prompted to enter a paragraph with clear instructions
+3. User types paragraph text, pressing Enter twice when finished
+4. Original paragraph is displayed for user confirmation
+5. extract_sentences() function uses regex to find all sentences
+6. Sentences are cleaned and processed to remove extra whitespace
+7. display_sentences_and_count() shows numbered list of sentences
+8. Total sentence count is displayed with formatting
+9. User is asked if they want to analyze another paragraph
+10. Program loops back to step 2 if user chooses to continue
+11. Program displays thank you message and exits if user is done
+
+Regular Expression Pattern Used:
+• Sentence Pattern: r'(?:^|\s+)([A-Z0-9][^.!?]*[.!?])'
+  - (?:^|\s+) - Non-capturing group matching start of string or whitespace
+  - [A-Z0-9] - First character must be uppercase letter or digit (handles numbered sentences)
+  - [^.!?]* - Matches any characters except sentence terminators (., !, ?)
+  - [.!?] - Matches the sentence terminator at the end
+  - Parentheses around the main pattern capture the sentence content
+  - Uses MULTILINE flag to handle paragraphs with line breaks
+
+Special Features:
+• Handles sentences that begin with numbers (e.g., "3 people went to the store.")
+• Supports multiple sentence terminators (period, exclamation mark, question mark)
+• Provides user-friendly input interface with clear instructions
+• Displays results in formatted, numbered list
+• Includes input validation and error handling for empty input
+• Allows continuous use with option to analyze multiple paragraphs
+• Clean, professional output formatting with headers and separators
+
+Expected Input Format:
+• Multi-sentence paragraphs with proper punctuation
+• Sentences can begin with uppercase letters or numbers
+• Sentences should end with '.', '!', or '?' for proper detection
+• Multiple lines of text are supported and automatically joined
+
+Sample Input/Output:
+Input: "Here is a sentence. This is another! 3 dogs ran quickly. What about this question?"
+Output:
+1. Here is a sentence.
+2. This is another!
+3. 3 dogs ran quickly.
+4. What about this question?
+TOTAL NUMBER OF SENTENCES: 4
+
+Link to repository: https://github.com/theisaachendo/ISAACCOP2373

@@ -1,0 +1,118 @@
+Isaac Henderson - PE#6 Technical Design Document
+COP2373 - Advanced Python Programming
+Regular Expression Validation Program
+
+Program Description: This program validates phone numbers, social security numbers, and zip codes using regular expressions. The program prompts users to input these three types of data and provides immediate feedback on whether each entry follows the correct format. The program uses predefined regular expression patterns to check the validity of user inputs and displays a summary of all validation results.
+
+Functions used in the Program (list in order as they are called):
+
+Function Name: validate_phone_number
+Description: Validates phone numbers in various common formats using regular expressions
+Parameters: phone (string) - The phone number to be validated
+Variables:
+• phone (string) - Stores the input phone number
+• pattern (string) - Regular expression pattern for phone number validation
+Logical Steps:
+1. Strip whitespace from input phone number
+2. Define regex pattern that accepts multiple formats:
+   - (123) 456-7890
+   - 123-456-7890
+   - 123.456.7890
+   - 1234567890
+   - 123 456 7890
+3. Use re.match() to check if phone matches the pattern
+4. Return boolean result (True for valid, False for invalid)
+Returns: bool - True if phone number is valid, False otherwise
+
+Function Name: validate_ssn
+Description: Validates Social Security Numbers in standard formats using regular expressions
+Parameters: ssn (string) - The Social Security Number to be validated
+Variables:
+• ssn (string) - Stores the input Social Security Number
+• pattern (string) - Regular expression pattern for SSN validation
+Logical Steps:
+1. Strip whitespace from input SSN
+2. Define regex pattern that accepts formats:
+   - XXX-XX-XXXX (with dashes)
+   - XXXXXXXXX (9 digits without dashes)
+3. Use re.match() to check if SSN matches the pattern
+4. Return boolean result
+Returns: bool - True if SSN is valid, False otherwise
+
+Function Name: validate_zip_code
+Description: Validates ZIP codes in both 5-digit and ZIP+4 formats using regular expressions
+Parameters: zip_code (string) - The ZIP code to be validated
+Variables:
+• zip_code (string) - Stores the input ZIP code
+• pattern (string) - Regular expression pattern for ZIP code validation
+Logical Steps:
+1. Strip whitespace from input ZIP code
+2. Define regex pattern that accepts formats:
+   - XXXXX (5 digits)
+   - XXXXX-XXXX (ZIP+4 format)
+3. Use re.match() to check if ZIP code matches the pattern
+4. Return boolean result
+Returns: bool - True if ZIP code is valid, False otherwise
+
+Function Name: get_user_input
+Description: Main interaction function that gets user input and validates all three data types
+Parameters: None
+Variables:
+• phone (string) - Stores user's phone number input
+• phone_valid (bool) - Stores validation result for phone number
+• ssn (string) - Stores user's SSN input
+• ssn_valid (bool) - Stores validation result for SSN
+• zip_code (string) - Stores user's ZIP code input
+• zip_valid (bool) - Stores validation result for ZIP code
+• status (string) - Temporary variable for formatting output
+• continue_choice (string) - Stores user's choice to continue or exit
+Logical Steps:
+1. Start infinite loop for continuous validation
+2. Prompt user for phone number input
+3. Call validate_phone_number() and display result
+4. Prompt user for SSN input
+5. Call validate_ssn() and display result
+6. Prompt user for ZIP code input
+7. Call validate_zip_code() and display result
+8. Display summary with checkmarks/X marks for all validations
+9. Show congratulations message if all valid, or correction message if not
+10. Ask user if they want to validate another set
+11. Break loop if user chooses not to continue
+Returns: None
+
+Function Name: main
+Description: Entry point of the program that displays welcome message and starts validation process
+Parameters: None
+Variables:
+None (function only contains print statements and function calls)
+Logical Steps:
+1. Display program title and welcome message
+2. Call get_user_input() to start the validation process
+3. Display thank you message when user exits
+Returns: None
+
+Logical Steps (Overall Program Flow):
+1. Program starts with main() function when script is executed
+2. Welcome message is displayed to the user
+3. get_user_input() function is called to begin validation process
+4. User is prompted to enter phone number, which is validated using validate_phone_number()
+5. User is prompted to enter SSN, which is validated using validate_ssn()
+6. User is prompted to enter ZIP code, which is validated using validate_zip_code()
+7. Summary of all validation results is displayed with visual indicators
+8. User is given option to validate another set of data or exit
+9. Process repeats until user chooses to exit
+10. Thank you message is displayed before program terminates
+
+Regular Expression Patterns Used:
+• Phone Number: ^(\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4})$
+  - Allows optional parentheses around area code
+  - Accepts various separators (dash, dot, space)
+  - Requires exactly 10 digits total
+• SSN: ^\d{3}-?\d{2}-?\d{4}$
+  - Requires exactly 9 digits
+  - Optional dashes in standard positions
+• ZIP Code: ^\d{5}(-\d{4})?$
+  - Requires 5 digits for basic ZIP
+  - Optional 4-digit extension with dash
+
+Link to repository: https://github.com/theisaachendo/ISAACCOP2373
